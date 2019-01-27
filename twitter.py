@@ -1,8 +1,7 @@
 from bs4 import BeautifulSoup
-from urllib.request import urlopen
 import requests
 import pandas as pd
-import html
+
 
 # get account info such as number of followers and stuff
 def twitter_profile_info(account):
