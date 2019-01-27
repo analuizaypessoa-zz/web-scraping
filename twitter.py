@@ -34,12 +34,12 @@ def twitter_profile_info(account):
         print(join_date)
         
         info = {
-                "Número de Tweets": tweets_number,
-                "Seguindo": following,
-                "Seguidores": followers,
-                "Número de Likes": likes,
+                "Number of tweets": tweets_number,
+                "Following": following,
+                "Followers": followers,
+                "Likes": likes,
                 "Bio": bio,
-                "Data de criacao": join_date
+                "Join date": join_date
         }
 
         return info
