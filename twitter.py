@@ -62,12 +62,3 @@ def twitter_profile_tweets(account):
 
 
 
-# UNDONE...
-def twitter_search(word, n):
-        url = "https://twitter.com/search?q=%23"+ word + "&src=typd"
-        source_code = requests.get(url)
-        plain_text = source_code.text
-        soup = BeautifulSoup(plain_text, 'html.parser')
-
-        tweets = [i.get_text() for i in soup.find_all("p",{"class": "TweetTextSize  js-tweet-text tweet-text"}, limit = n)]
-        print(tweets)

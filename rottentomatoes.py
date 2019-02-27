@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
-
+# getting data from rotten tomatoes mainpage
 def rotten_mainpage():
     url = "https://www.rottentomatoes.com/"
     source_code = requests.get(url)
