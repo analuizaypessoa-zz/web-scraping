@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 
 
-def imdb_top_movie_list():
+def top_movies():
     url = "https://www.imdb.com/search/title?genres=drama&groups=top_250&sort=user_rating,desc"
     source_code = requests.get(url)
     plain_text = source_code.text
@@ -19,30 +19,6 @@ def imdb_top_movie_list():
 
     df = pd.DataFrame({'movies': titles, 'rating': ratings, 'year': years})
     return df
-
-
-def movie_details(url):
-    source_code = requests.get(url)
-    plain_text = source_code.text
-    soup = BeautifulSoup(plain_text, 'html.parser')
-
-    # get title
-    tags = soup.find_all('div', {"class": "title_wrapper"})
-    titles = [item.find('h1').text.split('(')[0] for item in tags]
-    # get description
-    description = soup.find('div', {"class": "summary_text"}).text.strip()
-    # get poster link
-    tags = soup.find('div', {"class": "poster"})
-    posters = tags.find('img').get('src') 
-    
-    
-    result = titles
-    result.append(description)
-    result.append(posters)
-
-
-    return result
-
 
 def imdb_top_movie_details():
     url = "https://www.imdb.com/search/title?genres=drama&groups=top_250&sort=user_rating,desc"
@@ -62,5 +38,4 @@ def imdb_top_movie_details():
         movies.append(movie)
 
 
-
-
+print(top_movies())
