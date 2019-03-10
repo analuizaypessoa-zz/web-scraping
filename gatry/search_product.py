@@ -21,4 +21,6 @@ def search_product(product):
     print(prices)
 
 
-search_product("headphone")
+print("insira o produto desejado: \n")
+produto = input()
+search_product(produto)
