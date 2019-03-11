@@ -28,36 +28,7 @@ def coinmarketcap_mainpage():
     
     return df
 
-def coinmarketcap_mainpage_single_currency(name):
-    url = "https://coinmarketcap.com/"
-    source_code = requests.get(url)
-    plain_text = source_code.text
-    soup = BeautifulSoup(plain_text, 'html.parser')
-
-    currency_id = "id-" + name
-
-    currency = soup.find("tr", {"id": currency_id})
-
-    # get currency name
-    name = currency.find("a", {"class": "currency-name-container"}).text.strip() 
-    
-    # get currency price
-    price = currency.find("a", {"class": "price"}).text.strip() 
-    
-    # get currency marketcap
-    market = currency.find("td", {"class": "market-cap"}).text.strip() 
-    
-    # get currency daily volume 
-    volume = currency.find('a', {"class":"volume"}).text.strip() 
-    
-    # get currency daily price change
-    change =  currency.find('td', {"class": "percent-change"}).text.strip() 
-
-    response = {'name': name, 'price': price, 'marketcap': market, "volume": volume, "change": change}
-    
-    return response
-
-
 
 df = coinmarketcap_mainpage()
 print(df)
+print("< CoinMarketCap currencies info >")
