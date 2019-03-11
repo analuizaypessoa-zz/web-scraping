@@ -20,22 +20,5 @@ def top_movies():
     df = pd.DataFrame({'movies': titles, 'rating': ratings, 'year': years})
     return df
 
-def imdb_top_movie_details():
-    url = "https://www.imdb.com/search/title?genres=drama&groups=top_250&sort=user_rating,desc"
-    source_code = requests.get(url)
-    plain_text = source_code.text
-    soup = BeautifulSoup(plain_text, 'html.parser')
-
-    # get movie page url 
-    tags = soup.find_all('h3',{"class": "lister-item-header"})
-    movies_url = ["https://www.imdb.com" + item.find('a').get('href') for item in tags]
-
-    movies = []
-    for link in movies_url:
-        # go to the movie page and get detailed info
-        movie = movie_details(link)
-        print(movie)
-        movies.append(movie)
-
 
 print(top_movies())
